@@ -65,7 +65,7 @@ def matrix_subtract(A, B, N, M):
     return [[A[i][j] - B[i][j] for j in range(M)] for i in range(N)]
 
 def main():
-    file_path = "1lab.txt"  # Имя файла с матрицей
+    file_path = "1lab.txt"  
     A = read_matrix_from_file(file_path)
     N = len(A)
     M = len(A[0]) if N > 0 else 0
@@ -105,8 +105,6 @@ def main():
     KF = scalar_multiply(F, K, N, M)
     print_matrix(KF, "Результат умножения K*F")
 
-    # Для вычитания: AAT (N x N), KF (N x M) - корректно только если N == M!
-    # Если N != M, то нельзя вычитать, выведите предупреждение
     if N == M:
         result = matrix_subtract(AAT, KF, N, M)
         print_matrix(result, "Итоговый результат A*A^T - K*F")
